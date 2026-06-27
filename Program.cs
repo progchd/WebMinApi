@@ -216,7 +216,7 @@ app.MapGet("/api/services", () =>
     return Results.Ok(staticServiceCatalog);
 }).RequireAuthorization();
 
-// 5. SERVICES & SERVICE CATEGORIES
+// 4. SERVICES & SERVICE CATEGORIES
 // 5. SERVICES & SERVICE CATEGORIES
 app.MapGet("/api/say-hello", () =>
 {
