@@ -217,6 +217,7 @@ app.MapGet("/api/services", () =>
 }).RequireAuthorization();
 
 // 5. SERVICES & SERVICE CATEGORIES
+// 5. SERVICES & SERVICE CATEGORIES
 app.MapGet("/api/say-hello", () =>
 {
     return Results.Ok("Hello, world!");
