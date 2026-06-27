@@ -9,8 +9,6 @@ using WebMinApi.Models;
 using System.Security.Cryptography;
 using System.Linq;
 
-// Type declaration must come before top-level statements
-
 var builder = WebApplication.CreateBuilder(args);
 
 // ==========================================
