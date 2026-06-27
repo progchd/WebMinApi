@@ -216,6 +216,12 @@ app.MapGet("/api/services", () =>
     return Results.Ok(staticServiceCatalog);
 }).RequireAuthorization();
 
+// 5. SERVICES & SERVICE CATEGORIES
+app.MapGet("/api/say-hello", () =>
+{
+    return Results.Ok("Hello, world!");
+}).RequireAuthorization();
+
 // Get services for a selected category (case-insensitive Id match)
 app.MapGet("/api/services/{categoryId}/items", (string categoryId) =>
 {
