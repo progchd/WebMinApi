@@ -1,13 +1,13 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App
+name: Build and deploy ASP.Net Core app to Azure Web App - lottolytic-prog-app
 
 on:
   push:
     branches:
       - master
-      - development # 1. Added to listen to changes on the development branch
+      - development # Listen to changes on the development branch
   workflow_dispatch:
 
 jobs:
@@ -39,10 +39,9 @@ jobs:
   deploy-to-development:
     runs-on: windows-latest
     needs: build
-    # 2. This job ONLY runs if the push happened on the 'development' branch
-    if: github.ref == 'refs/heads/development'
+    if: github.ref == 'refs/heads/development' # Only runs when pushing to development
     permissions:
-      id-token: write
+      id-token: write # Required for requesting the JWT
       contents: read
 
     steps:
@@ -63,16 +62,15 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'lottolytic-prog-app'
-          slot-name: 'development' # 3. Targets your development slot specifically
+          slot-name: 'development' # Targets the staging slot
           package: .
 
   deploy-to-production:
     runs-on: windows-latest
     needs: build
-    # 4. This job ONLY runs if the push happened on the 'master' branch
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/master' # Only runs when pushing to master
     permissions:
-      id-token: write
+      id-token: write # Required for requesting the JWT
       contents: read
 
     steps:
@@ -93,5 +91,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'lottolytic-prog-app'
-          slot-name: 'Production'
+          slot-name: 'Production' # Targets production
           package: .
